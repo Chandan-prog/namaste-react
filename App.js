@@ -1,107 +1,433 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import './App.css';
 
-// Lecture 3
+const resObj = {
+  restaurant: [
+    {
+      info: {
+        id: "464509",
+        name: "Leon's - Burgers & Wings (Leon Grill)",
+        cloudinaryImageId: "qol6dzbjxyse0tylbznu",
+        locality: "Pulkeshi Nagar",
+        areaName: "Frazer Town",
+        costForTwo: "₹300 for two",
+        cuisines: [
+          "American",
+          "Snacks",
+          "Turkish",
+          "Portuguese",
+          "Continental",
+        ],
+        avgRating: 4.3,
+        feeDetails: {
+          restaurantId: "464509",
+          fees: [
+            {
+              name: "BASE_DISTANCE",
+              fee: 4000,
+            },
+            {
+              name: "BASE_TIME",
+            },
+            {
+              name: "ANCILLARY_SURGE_FEE",
+            },
+          ],
+          totalFee: 4000,
+        },
+        parentId: "371281",
+        avgRatingString: "4.3",
+        totalRatingsString: "5K+",
+        sla: {
+          deliveryTime: 31,
+          lastMileTravel: 4.5,
+          serviceability: "SERVICEABLE",
+          slaString: "31 mins",
+          lastMileTravelString: "4.5 km",
+          iconType: "ICON_TYPE_EMPTY",
+        },
+        availability: {
+          nextCloseTime: "2023-08-29 01:00:00",
+          opened: true,
+        },
+        badges: {},
+        isOpen: true,
+        type: "F",
+        badgesV2: {
+          entityBadges: {
+            imageBased: {},
+            textBased: {},
+            textExtendedBadges: {},
+          },
+        },
+        aggregatedDiscountInfoV3: {
+          discountCalloutInfo: {
+            message: "Free Delivery",
+            logoCtx: {
+              logo: "v1655895371/free_delivery_logo_hqipbo.png",
+            },
+          },
+        },
+        orderabilityCommunication: {
+          title: {},
+          subTitle: {},
+          message: {},
+          customIcon: {},
+        },
+        differentiatedUi: {
+          displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+          differentiatedUiMediaDetails: {
+            mediaType: "ADS_MEDIA_ENUM_IMAGE",
+            lottie: {},
+            video: {},
+          },
+        },
+        reviewsSummary: {},
+        displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+        restaurantOfferPresentationInfo: {},
+      },
+      analytics: {
+        context: "seo-data-6700ba32-3a4e-46e9-a900-d8989f8dabd4",
+      },
+      cta: {
+        link: "https://www.swiggy.com/restaurants/leons-burgers-and-wings-leon-grill-pulkeshi-nagar-frazer-town-bangalore-464509",
+        text: "RESTAURANT_MENU",
+        type: "WEBLINK",
+      },
+      widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo",
+    },
+    {
+      info: {
+        id: "3241",
+        name: "Meghana Foods",
+        cloudinaryImageId: "e0vvulfbahjxjz6k4uwi",
+        locality: "Residency Road",
+        areaName: "Ashok Nagar",
+        costForTwo: "₹500 for two",
+        cuisines: [
+          "Biryani",
+          "Andhra",
+          "South Indian",
+          "North Indian",
+          "Chinese",
+          "Seafood",
+        ],
+        avgRating: 4.5,
+        feeDetails: {
+          restaurantId: "3241",
+          fees: [
+            {
+              name: "BASE_DISTANCE",
+              fee: 3500,
+            },
+            {
+              name: "BASE_TIME",
+            },
+            {
+              name: "ANCILLARY_SURGE_FEE",
+            },
+          ],
+          totalFee: 3500,
+        },
+        parentId: "635",
+        avgRatingString: "4.5",
+        totalRatingsString: "10K+",
+        sla: {
+          deliveryTime: 21,
+          lastMileTravel: 2.3,
+          serviceability: "SERVICEABLE",
+          slaString: "21 mins",
+          lastMileTravelString: "2.3 km",
+          iconType: "ICON_TYPE_EMPTY",
+        },
+        availability: {
+          nextCloseTime: "2023-08-29 01:30:00",
+          opened: true,
+        },
+        badges: {},
+        isOpen: true,
+        type: "F",
+        badgesV2: {
+          entityBadges: {
+            imageBased: {},
+            textBased: {},
+            textExtendedBadges: {},
+          },
+        },
+        aggregatedDiscountInfoV3: {
+          discountCalloutInfo: {
+            message: "Free Delivery",
+            logoCtx: {
+              logo: "v1655895371/free_delivery_logo_hqipbo.png",
+            },
+          },
+        },
+        orderabilityCommunication: {
+          title: {},
+          subTitle: {},
+          message: {},
+          customIcon: {},
+        },
+        differentiatedUi: {
+          displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+          differentiatedUiMediaDetails: {
+            mediaType: "ADS_MEDIA_ENUM_IMAGE",
+            lottie: {},
+            video: {},
+          },
+        },
+        reviewsSummary: {},
+        displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+        restaurantOfferPresentationInfo: {},
+      },
+      analytics: {
+        context: "seo-data-6700ba32-3a4e-46e9-a900-d8989f8dabd4",
+      },
+      cta: {
+        link: "https://www.swiggy.com/restaurants/meghana-foods-residency-road-ashok-nagar-bangalore-3241",
+        text: "RESTAURANT_MENU",
+        type: "WEBLINK",
+      },
+      widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo",
+    },
 
-// Creating a React element
+    {
+      info: {
+        id: "534235",
+        name: "Cheesecake & Co.",
+        cloudinaryImageId: "40b0a201eadbec469c2f9a06d5e7c722",
+        locality: "6th Block",
+        areaName: "Koramangala",
+        costForTwo: "₹250 for two",
+        cuisines: ["Bakery"],
+        avgRating: 4.5,
+        veg: true,
+        feeDetails: {
+          restaurantId: "534235",
+          fees: [
+            {
+              name: "BASE_DISTANCE",
+              fee: 6800,
+            },
+            {
+              name: "BASE_TIME",
+            },
+            {
+              name: "ANCILLARY_SURGE_FEE",
+            },
+          ],
+          totalFee: 6800,
+        },
+        parentId: "387417",
+        avgRatingString: "4.5",
+        totalRatingsString: "1K+",
+        sla: {
+          deliveryTime: 32,
+          lastMileTravel: 6.2,
+          serviceability: "SERVICEABLE",
+          slaString: "32 mins",
+          lastMileTravelString: "6.2 km",
+          iconType: "ICON_TYPE_EMPTY",
+        },
+        availability: {
+          nextCloseTime: "2023-08-29 00:00:00",
+          opened: true,
+        },
+        badges: {
+          imageBadges: [
+            {
+              imageId: "newg.png",
+              description: "Gourmet",
+            },
+          ],
+        },
+        isOpen: true,
+        type: "F",
+        badgesV2: {
+          entityBadges: {
+            imageBased: {
+              badgeObject: [
+                {
+                  attributes: {
+                    description: "Gourmet",
+                    imageId: "newg.png",
+                  },
+                },
+              ],
+            },
+            textBased: {},
+            textExtendedBadges: {},
+          },
+        },
+        aggregatedDiscountInfoV3: {
+          header: "₹125 OFF",
+          subHeader: "ABOVE ₹249",
+          discountTag: "FLAT DEAL",
+          discountCalloutInfo: {
+            message: "Free Delivery",
+            logoCtx: {
+              logo: "v1655895371/free_delivery_logo_hqipbo.png",
+            },
+          },
+        },
+        orderabilityCommunication: {
+          title: {},
+          subTitle: {},
+          message: {},
+          customIcon: {},
+        },
+        differentiatedUi: {
+          displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+          differentiatedUiMediaDetails: {
+            mediaType: "ADS_MEDIA_ENUM_IMAGE",
+            lottie: {},
+            video: {},
+          },
+        },
+        reviewsSummary: {},
+        displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+        restaurantOfferPresentationInfo: {},
+      },
+      analytics: {
+        context: "seo-data-6700ba32-3a4e-46e9-a900-d8989f8dabd4",
+      },
+      cta: {
+        link: "https://www.swiggy.com/restaurants/cheesecake-and-co-6th-block-koramangala-bangalore-534235",
+        text: "RESTAURANT_MENU",
+        type: "WEBLINK",
+      },
+      widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo",
+    },
+  ],
+};
 
-const heading = React.createElement("h1", {}, "Namaste React 🚀");
-console.log(heading);
+const Header = () => {
+  return (
+    <div className="header">
+      <div className="logo-container">
+        <img
+          className="logo"
+          src="https://img.freepik.com/free-vector/detailed-chef-logo-template_23-2148987940.jpg?w=1060&t=st=1692979785~exp=1692980385~hmac=d0082e7ea16ba2430512bd29c5746862794386f03eae0724c5cfba5121bcec5c"
+          alt="Logo"
+        />
+      </div>
+      <div className="nav-items">
+        <ul>
+          <li>Home</li>
+          <li>About us</li>
+          <li>Contact us</li>
+          <li>Cart</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+const RestaurantCard = (props) => {
+  console.log(props.restaurantData);
+  const { restaurantData } = props;
+  //Optional chaining
+  const { cloudinaryImageId, name, cuisines, avgRating, sla, costForTwo } =
+    restaurantData?.info;
+  return (
+    <div className="res-card">
+      <img
+        className="res-logo"
+        src={
+          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+          cloudinaryImageId
+        }
+      />
+      <h3>{name}</h3>
+      <h5>{cuisines.join(", ")}</h5>
+      <h5>{avgRating} stars</h5>
+      <h5>{sla.slaString}</h5>
+      <h5>{costForTwo}</h5>
+      {/* <img
+        className="res-logo"
+        src={
+          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+          restaurantData.info.cloudinaryImageId
+        }
+      />
+      <h3>{restaurantData.info.name}</h3>
+      <h5>{restaurantData.info.cuisines.join(", ")}</h5>
+      <h5>{restaurantData.info.avgRating} stars</h5>
+      <h5>{restaurantData.info.sla.slaString}</h5>
+      <h5>{restaurantData.info.costForTwo}</h5> */}
+
+      {/* <img
+        className="res-logo"
+        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/e0vvulfbahjxjz6k4uwi"
+      />
+      <h3>Meghna Foods</h3>
+      <h5>Biriyani, NorthIndian, Asian</h5>
+      <h5>4.5 stars</h5>
+      <h5>ETA</h5> */}
+    </div>
+  );
+};
+
+const Body = () => {
+  return (
+    <div className="body">
+      <div className="search">Search</div>
+      <div className="res-container">
+        {resObj.restaurant.map((element) => {
+          return (
+            <RestaurantCard restaurantData={element} key={element.info.id} />
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+const Footer = () => {
+  return (
+    <div>
+      <h3>FOOTER</h3>
+      <div className="footer">
+        <ul>
+          <li>xyz</li>
+          <li>xyz</li>
+          <li>xyz</li>
+          <li>xyz</li>
+        </ul>
+        <ul>
+          <li>xyz</li>
+          <li>xyz</li>
+          <li>xyz</li>
+          <li>xyz</li>
+        </ul>
+        <ul>
+          <li>xyz</li>
+          <li>xyz</li>
+          <li>xyz</li>
+          <li>xyz</li>
+        </ul>
+        <ul>
+          <li>xyz</li>
+          <li>xyz</li>
+          <li>xyz</li>
+          <li>xyz</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+const AppLayout = () => {
+  return (
+    <div className="app">
+      {/* Header */}
+      <Header />
+      {/* Body */}
+      <Body />
+      {/* Footer */}
+      <Footer />
+    </div>
+  );
+};
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
-//React Element
-const jsxHeading = <h1 id="heading">Namaste React 🚀 using JSX</h1>;
-
-// Babel transpiles JSX => React.createElement => react element (JS object) => rendered as html element
-
-// root.render(jsxHeading);
-console.log(jsxHeading);
-console.log(jsxHeading === heading); //false as 2 objects are pointing to different memory locations
-
-//React Component
-
-const TitleComponent = () => (
-  <h1>This title was made using react component 🚀</h1>
-);
-
-const elem = (
-  <div>
-    <TitleComponent /> - is a component which is being called inside a react
-    element This is a react element 🚀
-  </div>
-);
-
-const elem2 = (
-  <div>
-    {elem} - is being called inside a react element
-    <h1>This is another react element 🚀</h1>
-  </div>
-);
-
-const HeadingComponent = () => {
-  return (
-    <div id="container">
-      {elem2} - is a react elem which is being called inside a react component
-      <TitleComponent /> 1- is being called inside a react component
-      <TitleComponent></TitleComponent>2{TitleComponent()}3{<TitleComponent />}4
-      <h1 className="header">Namaste React 🚀 using React component</h1>
-    </div>
-  );
-};
-
-const HeadingComponent2 = () => (
-  <div id="container">
-    <h1 className="header">Namaste React 🚀 using React component</h1>
-    {/* <TitleComponent>{elem2}</TitleComponent>  */}
-    {/* elem2 not printed nothing happens if you write above code */}
-  </div>
-);
-
-//Rendering a react component
-
-// root.render(<HeadingComponent />);
-
-//Assignment
-const Logo = () => {
-  return (
-    <div className="logo">
-      <img
-        src="https://e1.pxfuel.com/desktop-wallpaper/455/160/desktop-wallpaper-god-shiva-shiva-logo.jpg"
-        alt="logo"
-      />
-    </div>
-  );
-};
-
-const SearchBar = () => {
-  return (
-    <div className="searchBar">
-      <label className="label" htmlFor="search">
-        Label
-      </label>
-      <input type="text" id="search" className="inputText" />
-    </div>
-  );
-};
-
-const UserIcon = () => {
-  return (
-    <div className="userIcon">
-      <img
-        src="https://e1.pxfuel.com/desktop-wallpaper/251/345/desktop-wallpaper-psd-universal-blue-web-user-icon.jpg"
-        alt="user icon"
-      />
-    </div>
-  );
-};
-
-const App = () => {
-    return <div className="container">
-        <Logo/>
-        <SearchBar/>
-        <UserIcon/>
-    </div>
-}
-root.render(<App/>);
-
+root.render(<AppLayout />);
