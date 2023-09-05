@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
@@ -7,11 +8,11 @@ import { SWIGGY_URL } from "../utils/constants";
 
 const Body = () => {
 
-  const [restaurantList, setRestaurantList] = useState([]);
+  const [restaurantList, setRestaurantList] = useState(null);
 
   const [searchText, setSearchText] = useState("");
 
-  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+  const [filteredRestaurant, setFilteredRestaurant] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -32,7 +33,7 @@ const Body = () => {
     const filteredRestaurantList = restaurantList.filter((restaurant) => {
       return restaurant?.info?.avgRating > 4.3;
     });
-    setRestaurantList(filteredRestaurantList);
+    setFilteredRestaurant(filteredRestaurantList);
   };
 
   const searchInputChangeHandler = (ev) => {
@@ -47,7 +48,7 @@ const Body = () => {
     setFilteredRestaurant(filteredRestaurantList);
   };
 
-  return restaurantList.length === 0 ? (
+  return filteredRestaurant === null ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -70,7 +71,8 @@ const Body = () => {
       <div className="res-container">
         {filteredRestaurant.map((element) => {
           return (
-            <RestaurantCard restaurantData={element} key={element.info.id}/>
+           <Link key={element.info.id}
+           to={"/restaurants/"+element.info.id}> <RestaurantCard restaurantData={element} /> </Link>
           );
         })} 
       </div>
