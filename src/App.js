@@ -1,4 +1,4 @@
-import React from "react";
+import React, {lazy, Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
@@ -9,6 +9,7 @@ import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./Components/RestaurantMenu";
+// import Grocery from "./Components/Grocery";
 
 const AppLayout = () => {
   return (
@@ -19,6 +20,10 @@ const AppLayout = () => {
     </div>
   );
 };
+
+const Grocery = lazy(()=>{
+  return import('./Components/Grocery');
+})
 
 const appRouter  = createBrowserRouter([
   {
@@ -40,39 +45,16 @@ const appRouter  = createBrowserRouter([
       {
         path:'/restaurants/:resid',
         element: <RestaurantMenu/>,
+      },
+      {
+        path:'/grocery',
+        element: <Suspense fallback={<h1>Loading</h1>}><Grocery/></Suspense>,
       }
     ],
     errorElement: <Error/>
   },
   
 ]);
-
-// const AppLayout = () => {
-//   return (
-//     <div className="app">
-//       <Header />
-//       <Body restaurantData={resObj}/>
-//       <Footer />
-//     </div>
-//   );
-// };
-
-//This will go to a new page but if we want our header to stay intact then use router children 
-// const appRouter  = createBrowserRouter([
-//   {
-//     path:'/',
-//     element: <AppLayout/>,
-//     errorElement: <Error/>
-//   },
-//   {
-//     path:'/aboutUs',
-//     element: <About/>
-//   },
-//   {
-//     path:'/contactUs',
-//     element: <Contact/>,
-//   }
-// ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<RouterProvider router={appRouter} />);

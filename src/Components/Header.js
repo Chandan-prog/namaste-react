@@ -48,6 +48,9 @@ const Header = () => {
           <li>
             <Link to="/contactUs">Contact us</Link>
           </li>
+          <li>
+            <Link to="/grocery">Insta Mart</Link>
+          </li>
           <li>Cart</li>
           <button onClick={authHandler}>{auth}</button>
         </ul>
