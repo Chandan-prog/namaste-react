@@ -5,22 +5,8 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import { LOGO_URL } from "../utils/constants";
 
 const Header = () => {
-  // useEffect(() => {
-  //   console.log('useEffect rendered');
-  // }); // Called on everytime the component is re-rendered but only after the whole header component is rendered.
-  // i.e, 1st the header rendered console is printed and then the useEffect rendered is printed
-
-  // useEffect(() => {
-  //   console.log('useEffect rendered');
-  // }, []); // Called on the 1st time the component is rendered but only after the whole header component is rendered.
 
   const [auth,setAuth] = useState('LogIn');
-
-  //     useEffect(() => {
-  //   console.log('useEffect rendered');
-  // }, [auth]); // Called everytime the state of the auth variable chnages but only after the whole header component is rendered.
-
-  // console.log('header rendered');
 
   const authHandler = (ev) => {
     ev.preventDefault();
@@ -34,24 +20,24 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="header">
+    <div className="flex justify-between shadow-lg mb-10 px-2">
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL} alt="Logo" />
+        <img className="w-56" src={LOGO_URL} alt="Logo" />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>Online: {onlineStatus?'🟢':'🔴'}</li>
-          <li><Link to='/'>Home</Link></li>
-          <li>
+      <div className="flex items-center">
+        <ul className="flex p-4 m-4 pink">
+          <li className='px-4'>Online: {onlineStatus?'🟢':'🔴'}</li>
+          <li className='px-4'><Link to='/'>Home</Link></li>
+          <li className='px-4'>
             <Link to="/aboutUs">About us</Link>
           </li>
-          <li>
+          <li className='px-4'>
             <Link to="/contactUs">Contact us</Link>
           </li>
-          <li>
+          <li className='px-4'>
             <Link to="/grocery">Insta Mart</Link>
           </li>
-          <li>Cart</li>
+          <li className='px-4'>Cart</li>
           <button onClick={authHandler}>{auth}</button>
         </ul>
       </div>
