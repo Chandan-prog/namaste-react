@@ -16,7 +16,6 @@ const AppLayout = () => {
     <div className="app">
       <Header />
       <Outlet/>
-      <Footer />
     </div>
   );
 };
