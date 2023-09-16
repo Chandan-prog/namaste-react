@@ -4,7 +4,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 
 import { LOGO_URL } from "../utils/constants";
 
-const Header = () => {
+const Header = (props) => {
 
   const [auth,setAuth] = useState('LogIn');
 
@@ -15,6 +15,7 @@ const Header = () => {
     } else if (auth == "LogOut") {
       setAuth("LogIn");
     }
+    return(props.onAuthClick(auth));
   };
 
   const onlineStatus = useOnlineStatus();

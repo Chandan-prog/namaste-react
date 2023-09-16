@@ -12,9 +12,17 @@ import RestaurantMenu from "./Components/RestaurantMenu";
 // import Grocery from "./Components/Grocery";
 
 const AppLayout = () => {
+  const authClickHandler = (transferedData) => {
+    console.log(`This data is transfered from Header component that is being printed in App component
+        and we are doing this using state up lifting where we can transfer data from child component to parent
+        component by passing an event as a prop and receive data in the function.
+        ${transferedData}`);
+  }
+
+
   return (
     <div className="app">
-      <Header />
+      <Header onAuthClick = {authClickHandler}/>
       <Outlet/>
     </div>
   );

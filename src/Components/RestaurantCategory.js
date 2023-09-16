@@ -1,20 +1,12 @@
-import { useState } from "react";
 
 import ItemList from "./ItemList";
+import { useState } from "react";
 
-const RestaurantCategory = ({ data }) => {
-
-    const [showItem, setShowItem] = useState(false);
-
+const RestaurantCategory = ({ data, showItem, setShowIndexItem }) => {
+  // const [toggle, setToggle] = useState(true);
     const headerClickHandler = () => {
-        // if(!showItem)
-        // {
-        //     setShowItem(true);
-        // }
-        // else{
-        //     setShowItem(false);
-        // }
-        setShowItem(!showItem);
+      // setToggle(!toggle);
+      setShowIndexItem();
     }
   return (
     <div>
@@ -26,7 +18,6 @@ const RestaurantCategory = ({ data }) => {
             </span>
             <span>⬇️</span>
           </div>
-          {/* Now let's build the body and click handler */}
           {showItem && <ItemList items={data.itemCards}/>}
         </div>
       </div>
