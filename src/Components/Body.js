@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
@@ -6,6 +6,7 @@ import RestaurantCard, { withBakeryLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 
 import { SWIGGY_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState(null);
@@ -15,6 +16,10 @@ const Body = () => {
   const [filteredRestaurant, setFilteredRestaurant] = useState(null);
 
   const RestaurantCardBakery = withBakeryLabel(RestaurantCard);
+
+  const {setUserName, loggedInData} = useContext(UserContext);
+  const data = (useContext(UserContext));
+  console.log(data)
 
   useEffect(() => {
     fetchData();
@@ -83,12 +88,23 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
+        <label className="px-4 my-6">User Name: </label>
+          <input
+            className=" px-4 m-4 border border-solid border-black"
+            type="text"
+            value={loggedInData}
+            onChange={(e) => 
+             setUserName(e.target.value)
+            }
+          />
       </div>
       <div className="res-container flex flex-wrap m-4 border border-solid border-black justify-between">
         {filteredRestaurant.map((element) => {
           return (
             <Link key={element.info.id} to={"/restaurants/" + element.info.id}>
-              {element.info.cuisines.find((ele)=>{return ele === 'Bakery'}) ? (
+              {element.info.cuisines.find((ele) => {
+                return ele === "Bakery";
+              }) ? (
                 <RestaurantCardBakery restaurantData={element} />
               ) : (
                 <RestaurantCard restaurantData={element} />

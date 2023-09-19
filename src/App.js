@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
@@ -9,6 +9,7 @@ import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./Components/RestaurantMenu";
+import UserContext from "./utils/UserContext";
 // import Grocery from "./Components/Grocery";
 
 const AppLayout = () => {
@@ -17,50 +18,64 @@ const AppLayout = () => {
         and we are doing this using state up lifting where we can transfer data from child component to parent
         component by passing an event as a prop and receive data in the function.
         ${transferedData}`);
-  }
+  };
 
+  const [userName, setUserName] = useState();
 
+  //authentication logic
+  useEffect(() => {
+    //received some data from api
+    const data = {
+      userName: "Chandan Mishra",
+    };
+    setUserName(data.userName);
+  }, []);
   return (
-    <div className="app">
-      <Header onAuthClick = {authClickHandler}/>
-      <Outlet/>
-    </div>
+    <UserContext.Provider value={{ loggedInData: userName, setUserName }}>
+      <div className="app">
+        <Header onAuthClick={authClickHandler} />
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 
-const Grocery = lazy(()=>{
-  return import('./Components/Grocery');
-})
+const Grocery = lazy(() => {
+  return import("./Components/Grocery");
+});
 
-const appRouter  = createBrowserRouter([
+const appRouter = createBrowserRouter([
   {
-    path:'/',
-    element: <AppLayout/>,
-    children:[
+    path: "/",
+    element: <AppLayout />,
+    children: [
       {
-        path:'/',
-        element: <Body/>,
+        path: "/",
+        element: <Body />,
       },
       {
-        path:'/aboutUs',
-        element: <About/>
+        path: "/aboutUs",
+        element: <About />,
       },
       {
-        path:'/contactUs',
-        element: <Contact/>,
+        path: "/contactUs",
+        element: <Contact />,
       },
       {
-        path:'/restaurants/:resid',
-        element: <RestaurantMenu/>,
+        path: "/restaurants/:resid",
+        element: <RestaurantMenu />,
       },
       {
-        path:'/grocery',
-        element: <Suspense fallback={<h1>Loading</h1>}><Grocery/></Suspense>,
-      }
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<h1>Loading</h1>}>
+            <Grocery />
+          </Suspense>
+        ),
+      },
     ],
-    errorElement: <Error/>
+    errorElement: <Error />,
   },
-  
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 import { LOGO_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 const Header = (props) => {
 
+  const data = useContext(UserContext);
   const [auth,setAuth] = useState('LogIn');
 
   const authHandler = (ev) => {
@@ -40,6 +42,7 @@ const Header = (props) => {
           </li>
           <li className='px-4'>Cart</li>
           <button onClick={authHandler}>{auth}</button>
+          <li className="px-4 font-bold">{data.loggedInData}</li>
         </ul>
       </div>
     </div>
