@@ -1,14 +1,21 @@
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useSelector } from "react-redux";
 
 import { LOGO_URL } from "../utils/constants";
 import UserContext from "../utils/UserContext";
+
 
 const Header = (props) => {
 
   const data = useContext(UserContext);
   const [auth,setAuth] = useState('LogIn');
+
+  //subscribing to store
+  const cartItems =  useSelector((store) => {
+    console.log(store);
+    return store.cart.items});
 
   const authHandler = (ev) => {
     ev.preventDefault();
@@ -40,7 +47,9 @@ const Header = (props) => {
           <li className='px-4'>
             <Link to="/grocery">Insta Mart</Link>
           </li>
-          <li className='px-4'>Cart</li>
+          <li className='px-4 font-bold text-xl'>
+            <Link to='/cart'>Cart-({cartItems.length})</Link>
+          </li>
           <button onClick={authHandler}>{auth}</button>
           <li className="px-4 font-bold">{data.loggedInData}</li>
         </ul>

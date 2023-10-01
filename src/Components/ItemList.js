@@ -5,7 +5,7 @@ const ItemList = ({items}) => {
         <div>
             <span>
                 {items.map((item)=>{
-                    return <ItemCard itemData={item.card.info} key={item.card.info.id}/>
+                    return <ItemCard rawItemData={item} itemData={item.card.info} key={item.card.info.id}/>
                 })}
             </span>
 
